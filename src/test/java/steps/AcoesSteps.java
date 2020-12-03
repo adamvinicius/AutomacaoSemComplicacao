@@ -38,11 +38,11 @@ public class AcoesSteps {
 	public void pesquisoAAcaoExiboEValidoOResultado(String acao) {
 		preenchoOCampoPesquisaCom(acao);
 		envioATeclaEnter();
-		exibeOValorDaAcao();
 	}
 
 	@Quando("preencho o campo pesquisa com {string} e envio a tecla Enter")
 	public void preenchoOCampoPesquisaComEEnvioATeclaEnter(String acao) {
+		this.acao = acao;
 		acoesPage.preenchePesquisa(acao, Keys.ENTER);
 	}
 
