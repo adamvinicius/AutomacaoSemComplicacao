@@ -2,6 +2,8 @@ package steps;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+
 import org.openqa.selenium.Keys;
 
 import io.cucumber.java.pt.Entao;
@@ -25,7 +27,7 @@ public class AcoesSteps {
 	}
 
 	@Entao("exibe o valor da acao")
-	public void exibeOValorDaAcao() {
+	public void exibeOValorDaAcao() throws IOException {
 		System.out.println(acao + " o valor atual: R$" + acoesPage.getValorAcao());
 		// 11,04
 		// {"11","04"}

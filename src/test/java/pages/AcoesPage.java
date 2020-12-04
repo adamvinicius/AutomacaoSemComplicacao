@@ -1,5 +1,8 @@
 package pages;
 
+import java.io.IOException;
+
+import core.Driver;
 import maps.AcoesMap;
 
 public class AcoesPage {
@@ -9,8 +12,10 @@ public class AcoesPage {
 		acoesMap.inpPesquisa.sendKeys(valores);
 	}
 	
-	public String getValorAcao() {
+	public String getValorAcao() throws IOException {
+		Driver.printScreen("Valor Acao");
 		return acoesMap.spValor.getText();
+		
 	}
 	
 	

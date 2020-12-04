@@ -15,7 +15,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 		plugin = {"json:target/reports/CucumberReports.json", "pretty"},
 		snippets = SnippetType.CAMELCASE
 		
-			
+		
 		)
 
 public class RunnerTest {
