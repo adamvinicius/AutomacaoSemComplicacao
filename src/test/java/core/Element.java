@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import enums.ByValue;
 
@@ -20,6 +21,10 @@ public class Element {
 		setMap();
 	}
 	
+	public Element(String mapa) {
+		this.mapa = mapa;
+	}
+	
 	private void setMap(){
 		map.put(ByValue.id, By.id(mapa));
 		map.put(ByValue.css, By.cssSelector(mapa));
@@ -32,10 +37,23 @@ public class Element {
 	//id, css, xpath, name, linkText, className
 		
 	public WebElement createElement() {
+		if (tipo == null) {
+			if(mapa.startsWith("/")) {
+				return Driver.driver.findElement(By.xpath(mapa));
+			}
+			return Driver.driver.findElement(By.cssSelector(mapa));
+		}
 		return Driver.driver.findElement(map.get(tipo));
 	}
 	
 	public List<WebElement> createElements(){
+		if (tipo == null) {
+			if(mapa.startsWith("/")) {
+				return Driver.driver.findElements(By.xpath(mapa));
+			}
+			return Driver.driver.findElements(By.cssSelector(mapa));
+		}
+		
 		return Driver.driver.findElements(map.get(tipo));
 	}
 	
@@ -65,6 +83,16 @@ public class Element {
 	
 	public boolean isSelected() {
 		return createElement().isSelected();
+	}
+	
+	public void selectText(String value) {
+		Select dropBox = new Select(createElement());
+		dropBox.selectByVisibleText(value);
+	}
+	
+	public void selectValue(String value) {
+		Select dropBox = new Select(createElement());
+		dropBox.selectByValue(value);
 	}
 	
 	
