@@ -1,5 +1,6 @@
 package runner;
 
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 import io.cucumber.junit.Cucumber;
@@ -9,7 +10,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features = "src/test/resources/features",
-		tags = "@register",
+		tags = "@buscaAcaoUnicoPasso2",
 		glue = "steps",
 		monochrome = true,
 		plugin = {"json:target/reports/CucumberReports.json", "pretty"},
@@ -19,5 +20,8 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 		)
 
 public class RunnerTest {
-
+	@BeforeClass
+	public static void iniciaExecucao() {
+		//System.setProperty("navegador", "edge");
+	}
 }

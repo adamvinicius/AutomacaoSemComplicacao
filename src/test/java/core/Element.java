@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 import enums.ByValue;
@@ -93,6 +96,28 @@ public class Element {
 	public void selectValue(String value) {
 		Select dropBox = new Select(createElement());
 		dropBox.selectByValue(value);
+	}
+	
+	public void visibilityOf() {
+		Driver.wait.until(ExpectedConditions.visibilityOf(createElement()));
+	}
+	
+	public void invisibilityOf() {
+		Driver.wait.until(ExpectedConditions.invisibilityOf(createElement()));
+	}
+	
+	public void elementToBeClickable() {
+		Driver.wait.until(ExpectedConditions.elementToBeClickable(createElement()));
+	}
+	
+	public void moveToElement() {
+		Actions action = new Actions(Driver.driver);
+		action.moveToElement(createElement()).perform();
+		
+	}
+	
+	public void switchTo() {
+		Driver.driver.switchTo().frame(createElement());
 	}
 	
 	
